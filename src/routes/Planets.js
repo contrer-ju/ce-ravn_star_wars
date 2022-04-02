@@ -10,12 +10,12 @@ export default function Planets() {
     apiErrorStatus,
     isLoadingResults,
     planetsList,
-    getPlanetsList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && planetsList.length === 0) getPlanetsList();
+    if (!apiErrorStatus && planetsList.length === 0) getGeneralData("planets");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

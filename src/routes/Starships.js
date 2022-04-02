@@ -10,12 +10,12 @@ export default function Starships() {
     apiErrorStatus,
     isLoadingResults,
     starshipsList,
-    getStarshipsList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && starshipsList.length === 0) getStarshipsList();
+    if (!apiErrorStatus && starshipsList.length === 0) getGeneralData("starships");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -10,12 +10,12 @@ export default function Films() {
     apiErrorStatus,
     isLoadingResults,
     filmsList,
-    getFilmsList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && filmsList.length === 0) getFilmsList();
+    if (!apiErrorStatus && filmsList.length === 0) getGeneralData("films");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

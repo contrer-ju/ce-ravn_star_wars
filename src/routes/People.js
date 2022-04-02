@@ -10,12 +10,12 @@ export default function People() {
     apiErrorStatus,
     isLoadingResults,
     peoplesList,
-    getPeoplesList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && peoplesList.length === 0) getPeoplesList();
+    if (!apiErrorStatus && peoplesList.length === 0) getGeneralData("people");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

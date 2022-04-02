@@ -10,12 +10,13 @@ export default function Vehicles() {
     apiErrorStatus,
     isLoadingResults,
     vehiclesList,
-    getVehiclesList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && vehiclesList.length === 0) getVehiclesList();
+    if (!apiErrorStatus && vehiclesList.length === 0)
+      getGeneralData("vehicles");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

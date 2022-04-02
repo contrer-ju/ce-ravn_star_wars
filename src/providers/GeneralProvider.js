@@ -1,16 +1,12 @@
 import { createContext, useState } from "react";
-import onGettingFilmsList from "../handlers/onGettingFilmsList";
 import onGettingFilmsDetails from "../handlers/onGettingFilmsDetails";
-import onGettingPeoplesList from "../handlers/onGettingPeoplesList";
 import onGettingPeoplesDetails from "../handlers/onGettingPeoplesDetails";
-import onGettingPlanetsList from "../handlers/onGettingPlanetsList";
 import onGettingPlanetsDetails from "../handlers/onGettingPlanetsDetails";
-import onGettingSpeciesList from "../handlers/onGettingSpeciesList";
 import onGettingSpeciesDetails from "../handlers/onGettingSpeciesDetails";
-import onGettingStarshipsList from "../handlers/onGettingStarshipsList";
 import onGettingStarshipsDetails from "../handlers/onGettingStarshipsDetails";
-import onGettingVehiclesList from "../handlers/onGettingVehiclesList";
 import onGettingVehiclesDetails from "../handlers/onGettingVehiclesDetails";
+
+import onGettingGeneralData from "../handlers/onGettingGeneralData";
 
 export const GeneralContext = createContext({});
 
@@ -49,8 +45,19 @@ const GeneralProvider = ({ children }) => {
   const [vehiclesDetails, setVehiclesDetails] = useState([]);
   const [filmsOnVehiclesDetails, setFilmsOnVehiclesDetails] = useState([]);
 
-  const getFilmsList = () =>
-    onGettingFilmsList(setIsLoadingResults, setApiErrorStatus, setFilmsList);
+  const getGeneralData = (location) =>
+    onGettingGeneralData(
+      location,
+      setIsLoadingResults,
+      setApiErrorStatus,
+      setFilmsList,
+      setPeoplesList,
+      setPlanetsList,
+      setSpeciesList,
+      setStarshipsList,
+      setVehiclesList
+    );
+
   const getFilmsDetails = (location) => {
     setPeopleOnFilmsDetails([]);
     onGettingFilmsDetails(
@@ -63,12 +70,6 @@ const GeneralProvider = ({ children }) => {
     );
   };
 
-  const getPeoplesList = () =>
-    onGettingPeoplesList(
-      setIsLoadingResults,
-      setApiErrorStatus,
-      setPeoplesList
-    );
   const getPeoplesDetails = (location) => {
     setFilmsOnPeoplesDetails([]);
     onGettingPeoplesDetails(
@@ -83,12 +84,6 @@ const GeneralProvider = ({ children }) => {
     );
   };
 
-  const getPlanetsList = () =>
-    onGettingPlanetsList(
-      setIsLoadingResults,
-      setApiErrorStatus,
-      setPlanetsList
-    );
   const getPlanetsDetails = (location) => {
     setPeopleOnPlanetsDetails([]);
     setFilmsOnPlanetsDetails([]);
@@ -103,12 +98,6 @@ const GeneralProvider = ({ children }) => {
     );
   };
 
-  const getSpeciesList = () =>
-    onGettingSpeciesList(
-      setIsLoadingResults,
-      setApiErrorStatus,
-      setSpeciesList
-    );
   const getSpeciesDetails = (location) => {
     setPeopleOnSpeciesDetails([]);
     setFilmsOnSpeciesDetails([]);
@@ -124,12 +113,6 @@ const GeneralProvider = ({ children }) => {
     );
   };
 
-  const getStarshipsList = () =>
-    onGettingStarshipsList(
-      setIsLoadingResults,
-      setApiErrorStatus,
-      setStarshipsList
-    );
   const getStarshipsDetails = (location) => {
     setFilmsOnStarshipsDetails([]);
     onGettingStarshipsDetails(
@@ -142,12 +125,6 @@ const GeneralProvider = ({ children }) => {
     );
   };
 
-  const getVehiclesList = () =>
-    onGettingVehiclesList(
-      setIsLoadingResults,
-      setApiErrorStatus,
-      setVehiclesList
-    );
   const getVehiclesDetails = (location) => {
     setFilmsOnVehiclesDetails([]);
     onGettingVehiclesDetails(
@@ -195,40 +172,35 @@ const GeneralProvider = ({ children }) => {
         apiErrorStatus,
         isLoadingResults,
         isLoadingPartialsResults,
+        getGeneralData,
         filmsList,
         filmsDetails,
         peopleOnFilmsDetails,
-        getFilmsList,
         getFilmsDetails,
         peoplesList,
         peoplesDetails,
         specieOnPeoplesDetails,
         planetOnPeoplesDetails,
         filmsOnPeoplesDetails,
-        getPeoplesList,
         getPeoplesDetails,
         planetsList,
         planetsDetails,
         peopleOnPlanetsDetails,
         filmsOnPlanetsDetails,
-        getPlanetsList,
         getPlanetsDetails,
         speciesList,
         speciesDetails,
         planetOnSpeciesDetails,
         peopleOnSpeciesDetails,
         filmsOnSpeciesDetails,
-        getSpeciesList,
         getSpeciesDetails,
         starshipsList,
         starshipsDetails,
         filmsOnStarshipsDetails,
-        getStarshipsList,
         getStarshipsDetails,
         vehiclesList,
         vehiclesDetails,
         filmsOnVehiclesDetails,
-        getVehiclesList,
         getVehiclesDetails,
         clearStates,
       }}

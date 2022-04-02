@@ -10,12 +10,12 @@ export default function Species() {
     apiErrorStatus,
     isLoadingResults,
     speciesList,
-    getSpeciesList,
+    getGeneralData,
     clearStates,
   } = useContext(GeneralContext);
 
   useEffect(() => {
-    if (!apiErrorStatus && speciesList.length === 0) getSpeciesList();
+    if (!apiErrorStatus && speciesList.length === 0) getGeneralData("species");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
